@@ -1,0 +1,13 @@
+#calculator {
+    width: 300px;
+}
+
+#display {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
