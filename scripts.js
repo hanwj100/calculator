@@ -46,13 +46,14 @@ const operatorButtons = document.getElementsByClassName("operator");
 for (let operator of operatorButtons) {
     operator.addEventListener("click", () => {
         storeCurrentOperator(operator);
-        storePreviousNumber();
+        storeCurrentNumber();
         clearInputField();
     });
 }
 
 const evaluatorButton = document.getElementById("button-=");
 evaluatorButton.addEventListener("click", () => {
+    calculation.previousNumber = calculation.currentNumber;
     storeCurrentNumber();
     calculateResult();
     clearInputField();
@@ -74,10 +75,6 @@ function clearInputField() {
 
 function storeCurrentOperator(operator) {
     calculation.operator = operator.dataset.value;
-}
-
-function storePreviousNumber() {
-    calculation.previousNumber = getInputField().textContent;
 }
 
 function storeCurrentNumber() {
