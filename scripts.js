@@ -26,3 +26,16 @@ function operate(operator, x, y) {
             return divide(x, y);
     }
 }
+
+
+const input = document.getElementById("input-field");
+const numberButtons = document.getElementsByClassName("number");
+
+for(let button of numberButtons) {
+    button.addEventListener("click", () => appendToInputField(button.dataset.value));
+}
+
+function appendToInputField(value) {
+    input.textContent = input.textContent.concat(value);
+}
+
