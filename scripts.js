@@ -29,6 +29,7 @@ function operate(operator, x, y) {
 
 let calculation = {
     operator: "",
+    isWaitingForNumber: false,
     previousNumber: NaN,
     currentNumber: NaN,
     result: NaN
@@ -112,6 +113,7 @@ function currentNumberToPercent() {
 
 function clearCalculation() {
     calculation.operator = "";
+    calculation.isWaitingForNumber = false;
     calculation.previousNumber = NaN;
     calculation.currentNumber = NaN;
     calculation.result = NaN;
