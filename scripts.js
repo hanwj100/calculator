@@ -27,10 +27,7 @@ function operate(operator, x, y) {
     }
 }
 
-
-const input = document.getElementById("input-field");
 const numberButtons = document.getElementsByClassName("number");
-
 for (let button of numberButtons) {
     button.addEventListener("click", () => appendToInputField(button.dataset.value));
 }
@@ -50,13 +47,14 @@ function getInputField() {
     return document.getElementById("input-field");
 }
 
-
 function appendToInputField(value) {
-    input.textContent = input.textContent.concat(value);
+    const inputField = getInputField();
+    inputField.textContent = inputField.textContent.concat(value);
 }
 
 function clearInputField() {
-    input.textContent = "";
+    const inputField = getInputField();
+    inputField.textContent = "";
 }
 
 function storeCurrentOperator(operator) {
