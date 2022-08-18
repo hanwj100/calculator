@@ -53,7 +53,7 @@ for (let operator of operatorButtons) {
 
 const evaluatorButton = document.getElementById("button-=");
 evaluatorButton.addEventListener("click", () => {
-    calculation.secondNumber = getInputField().textContent;
+    storeSecondNumber();
     calculation.result = operate(calculation.operator, 
         Number(calculation.firstNumber), Number(calculation.secondNumber));
     clearInputField();
@@ -79,4 +79,8 @@ function storeCurrentOperator(operator) {
 
 function storeFirstNumber() {
     calculation.firstNumber = getInputField().textContent;
+}
+
+function storeSecondNumber() {
+    calculation.secondNumber = getInputField().textContent;
 }
