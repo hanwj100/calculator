@@ -35,7 +35,14 @@ for(let button of numberButtons) {
     button.addEventListener("click", () => appendToInputField(button.dataset.value));
 }
 
+const buttonClear = document.getElementById("button-clear");
+buttonClear.addEventListener("click", clearInputField);
+
 function appendToInputField(value) {
     input.textContent = input.textContent.concat(value);
+}
+
+function clearInputField() {
+    input.textContent = "";
 }
 
