@@ -13,7 +13,8 @@
 <body>
     <div id="calculator">
         <div id="display">
-            <div id="input-field">INPUT GOES HERE</div>
+            <div id="input-field" data-first-value="" data-second-value=""
+            data-current-operation=""></div>
         </div>
         <div id="buttons">
             <button class="functional" id="button-clear" data-value="clear">clear</button>
@@ -34,7 +35,7 @@
             <button class="operator" id="button-+" data-value="+">+</button>
             <button class="number" id="button-0" data-value="0">0</button>
             <button class="number" id="button-." data-value=".">.</button>
-            <button class="operator" id="button-=" data-value="=">=</button>
+            <button class="evaluator" id="button-=" data-value="=">=</button>
         </div>
     </div>
 </body>

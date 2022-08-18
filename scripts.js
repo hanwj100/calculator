@@ -31,12 +31,23 @@ function operate(operator, x, y) {
 const input = document.getElementById("input-field");
 const numberButtons = document.getElementsByClassName("number");
 
-for(let button of numberButtons) {
+for (let button of numberButtons) {
     button.addEventListener("click", () => appendToInputField(button.dataset.value));
 }
 
 const buttonClear = document.getElementById("button-clear");
 buttonClear.addEventListener("click", clearInputField);
+
+const operatorButtons = document.getElementsByClassName("operator");
+for (let operator of operatorButtons) {
+    const currentInput = document.getElementById("input-field");
+        operator.addEventListener("click", () => {
+            currentInput.dataset["currentOperation"] = operator.dataset.value;
+            currentInput.dataset.firstValue = currentInput.textContent;
+        });
+}
+
+
 
 function appendToInputField(value) {
     input.textContent = input.textContent.concat(value);
