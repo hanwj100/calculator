@@ -51,6 +51,14 @@ for (let operator of operatorButtons) {
     });
 }
 
+const inverseButton = document.getElementById("inverse-button");
+inverseButton.addEventListener("click", () => {
+    storeCurrentNumber();
+    inverseCurrentNumber();
+    clearInputField();
+    appendToInputField(calculation.currentNumber);
+})
+
 const evaluatorButton = document.getElementById("equal-button");
 evaluatorButton.addEventListener("click", () => {
     calculation.previousNumber = calculation.currentNumber;
@@ -79,6 +87,10 @@ function storeCurrentOperator(operator) {
 
 function storeCurrentNumber() {
     calculation.currentNumber = getInputField().textContent;
+}
+
+function inverseCurrentNumber() {
+    calculation.currentNumber = Number(calculation.currentNumber) * -1;
 }
 
 function calculateResult() {
