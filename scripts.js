@@ -40,7 +40,10 @@ for (let button of numberButtons) {
 }
 
 const clearButton = document.getElementById("clear-button");
-clearButton.addEventListener("click", clearInputField);
+clearButton.addEventListener("click", () => {
+    clearCalculation();
+    clearInputField();
+});
 
 const operatorButtons = document.getElementsByClassName("operator");
 for (let operator of operatorButtons) {
@@ -94,6 +97,13 @@ function storeCurrentNumber() {
 
 function invertCurrentNumber() {
     calculation.currentNumber = calculation.currentNumber * -1;
+}
+
+function clearCalculation() {
+    calculation.operator = "";
+    calculation.previousNumber = NaN;
+    calculation.currentNumber = NaN;
+    calculation.result = NaN;
 }
 
 function calculateResult() {
