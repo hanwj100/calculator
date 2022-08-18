@@ -52,6 +52,7 @@ for (let operator of operatorButtons) {
         storeCurrentOperator(operator);
         storeCurrentNumber();
         clearInputField();
+        calculation.isWaitingForNumber = true;
         calculation.previousNumber = calculation.currentNumber;
     });
 }
