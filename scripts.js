@@ -70,16 +70,13 @@ function appendToInputField(value) {
 }
 
 function clearInputField() {
-    const inputField = getInputField();
-    inputField.textContent = "";
+    getInputField().textContent = "";
 }
 
 function storeCurrentOperator(operator) {
-    const inputField = getInputField();
     calculation.operator = operator.dataset.value;
 }
 
 function storeFirstNumber() {
-    const inputField = getInputField();
-    calculation.firstNumber = inputField.textContent;
+    calculation.firstNumber = getInputField().textContent;
 }
