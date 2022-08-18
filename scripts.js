@@ -27,7 +27,7 @@ function operate(operator, x, y) {
     }
 }
 
-let currentCalculation = {
+let calculation = {
     operator: "",
     firstNumber: "",
     secondNumber: "",
@@ -53,10 +53,11 @@ for (let operator of operatorButtons) {
 
 const evaluatorButton = document.getElementById("button-=");
 evaluatorButton.addEventListener("click", () => {
-    currentCalculation.secondNumber = getInputField().textContent;
-    currentCalculation.result = operate(currentCalculation.operator, Number(currentCalculation.firstNumber), Number(currentCalculation.secondNumber));
+    calculation.secondNumber = getInputField().textContent;
+    calculation.result = operate(calculation.operator, 
+        Number(calculation.firstNumber), Number(calculation.secondNumber));
     clearInputField();
-    appendToInputField(currentCalculation.result);
+    appendToInputField(calculation.result);
 });
 
 function getInputField() {
@@ -75,10 +76,10 @@ function clearInputField() {
 
 function storeCurrentOperator(operator) {
     const inputField = getInputField();
-    currentCalculation.operator = operator.dataset.value;
+    calculation.operator = operator.dataset.value;
 }
 
 function storeFirstNumber() {
     const inputField = getInputField();
-    currentCalculation.firstNumber = inputField.textContent;
+    calculation.firstNumber = inputField.textContent;
 }
