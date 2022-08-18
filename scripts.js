@@ -55,8 +55,7 @@ const invertButton = document.getElementById("invert-button");
 invertButton.addEventListener("click", () => {
     storeCurrentNumber();
     invertCurrentNumber();
-    clearInputField();
-    appendToInputField(calculation.currentNumber);
+    updateInputField(calculation.result);
 })
 
 const evaluatorButton = document.getElementById("equal-button");
@@ -64,8 +63,7 @@ evaluatorButton.addEventListener("click", () => {
     calculation.previousNumber = calculation.currentNumber;
     storeCurrentNumber();
     calculateResult();
-    clearInputField();
-    appendToInputField(calculation.result);
+    updateInputField(calculation.result);
 });
 
 function getInputField() {
@@ -79,6 +77,11 @@ function appendToInputField(value) {
 
 function clearInputField() {
     getInputField().textContent = "";
+}
+
+function updateInputField(value) {
+   clearInputField();
+   appendToInputField(value); 
 }
 
 function storeCurrentOperator(operator) {
