@@ -29,9 +29,9 @@ function operate(operator, x, y) {
 
 let calculation = {
     operator: "",
-    previousNumber: "",
-    currentNumber: "",
-    result: ""
+    previousNumber: NaN,
+    currentNumber: NaN,
+    result: NaN
 }
 
 const numberButtons = document.getElementsByClassName("number");
@@ -89,14 +89,14 @@ function storeCurrentOperator(operator) {
 }
 
 function storeCurrentNumber() {
-    calculation.currentNumber = getInputField().textContent;
+    calculation.currentNumber = Number(getInputField().textContent);
 }
 
 function invertCurrentNumber() {
-    calculation.currentNumber = Number(calculation.currentNumber) * -1;
+    calculation.currentNumber = calculation.currentNumber * -1;
 }
 
 function calculateResult() {
     calculation.result = operate(calculation.operator,
-        Number(calculation.previousNumber), Number(calculation.currentNumber));
+        calculation.previousNumber, calculation.currentNumber);
 }
