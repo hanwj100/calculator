@@ -37,7 +37,10 @@ let calculation = {
 
 const numberButtons = document.getElementsByClassName("number");
 for (let button of numberButtons) {
-    button.addEventListener("click", () => appendToInputField(button.dataset.value));
+    button.addEventListener("click", () => {
+        appendToInputField(button.dataset.value);
+        calculation.isWaitingForNumber = false;
+    });
 }
 
 const clearButton = document.getElementById("clear-button");
