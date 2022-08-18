@@ -20,11 +20,18 @@ function operate(operator, x, y) {
             return add(x, y);
         case "-":
             return subtract(x, y);
-        case "*":
+        case "×":
             return multiply(x, y);
-        case "/":
+        case "÷":
             return divide(x, y);
     }
+}
+
+let currentCalculation = {
+    operator: "",
+    firstNumber: "",
+    secondNumber: "",
+    result: ""
 }
 
 const numberButtons = document.getElementsByClassName("number");
@@ -40,14 +47,17 @@ for (let operator of operatorButtons) {
     operator.addEventListener("click", () => {
         storeCurrentOperator(operator);
         storeFirstNumber();
+        clearInputField();
     });
 }
 
-let currentCalculation = {
-    operator: "",
-    firstNumber: "",
-    secondNumber: ""
-}
+const evaluatorButton = document.getElementById("button-=");
+evaluatorButton.addEventListener("click", () => {
+    currentCalculation.secondNumber = getInputField().textContent;
+    currentCalculation.result = operate(currentCalculation.operator, Number(currentCalculation.firstNumber), Number(currentCalculation.secondNumber));
+    clearInputField();
+    appendToInputField(currentCalculation.result);
+});
 
 function getInputField() {
     return document.getElementById("input-field");
