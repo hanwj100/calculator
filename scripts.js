@@ -38,8 +38,11 @@ let calculation = {
 const numberButtons = document.getElementsByClassName("number");
 for (let button of numberButtons) {
     button.addEventListener("click", () => {
+        if (calculation.isWaitingForNumber) {
+            clearInputField();
+            calculation.isWaitingForNumber = false;
+        }
         appendToInputField(button.dataset.value);
-        calculation.isWaitingForNumber = false;
     });
 }
 
@@ -54,7 +57,6 @@ for (let operator of operatorButtons) {
     operator.addEventListener("click", () => {
         storeCurrentOperator(operator);
         storeCurrentNumber();
-        clearInputField();
         calculation.isWaitingForNumber = true;
         calculation.previousNumber = calculation.currentNumber;
     });
@@ -79,6 +81,7 @@ evaluatorButton.addEventListener("click", () => {
     storeCurrentNumber();
     calculateResult();
     updateInputField(calculation.result);
+    calculation.isWaitingForNumber = true;
 });
 
 function getInputField() {
