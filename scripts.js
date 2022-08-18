@@ -51,6 +51,7 @@ for (let operator of operatorButtons) {
         storeCurrentOperator(operator);
         storeCurrentNumber();
         clearInputField();
+        calculation.previousNumber = calculation.currentNumber;
     });
 }
 
@@ -70,7 +71,6 @@ percentageButton.addEventListener("click", () => {
 
 const evaluatorButton = document.getElementById("equal-button");
 evaluatorButton.addEventListener("click", () => {
-    calculation.previousNumber = calculation.currentNumber;
     storeCurrentNumber();
     calculateResult();
     updateInputField(calculation.result);
@@ -90,8 +90,8 @@ function clearInputField() {
 }
 
 function updateInputField(value) {
-   clearInputField();
-   appendToInputField(value); 
+    clearInputField();
+    appendToInputField(value);
 }
 
 function storeCurrentOperator(operator) {
