@@ -39,8 +39,8 @@ for (let button of numberButtons) {
     button.addEventListener("click", () => appendToInputField(button.dataset.value));
 }
 
-const buttonClear = document.getElementById("button-clear");
-buttonClear.addEventListener("click", clearInputField);
+const clearButton = document.getElementById("clear-button");
+clearButton.addEventListener("click", clearInputField);
 
 const operatorButtons = document.getElementsByClassName("operator");
 for (let operator of operatorButtons) {
@@ -51,7 +51,7 @@ for (let operator of operatorButtons) {
     });
 }
 
-const evaluatorButton = document.getElementById("button-=");
+const evaluatorButton = document.getElementById("equal-button");
 evaluatorButton.addEventListener("click", () => {
     calculation.previousNumber = calculation.currentNumber;
     storeCurrentNumber();
