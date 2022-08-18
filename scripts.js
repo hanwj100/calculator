@@ -40,13 +40,15 @@ buttonClear.addEventListener("click", clearInputField);
 
 const operatorButtons = document.getElementsByClassName("operator");
 for (let operator of operatorButtons) {
-    const currentInput = document.getElementById("input-field");
-        operator.addEventListener("click", () => {
-            currentInput.dataset["currentOperation"] = operator.dataset.value;
-            currentInput.dataset.firstValue = currentInput.textContent;
-        });
+    operator.addEventListener("click", () => {
+        storeCurrentOperator(operator);
+        storeFirstNumber();
+    });
 }
 
+function getInputField() {
+    return document.getElementById("input-field");
+}
 
 
 function appendToInputField(value) {
@@ -57,3 +59,12 @@ function clearInputField() {
     input.textContent = "";
 }
 
+function storeCurrentOperator(operator) {
+    const inputField = getInputField();
+    inputField.dataset["currentOperator"] = operator.dataset.value;
+}
+
+function storeFirstNumber() {
+    const inputField = getInputField();
+    inputField.dataset.firstNumber = inputField.textContent;
+}
