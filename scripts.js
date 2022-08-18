@@ -43,6 +43,12 @@ for (let operator of operatorButtons) {
     });
 }
 
+let currentCalculation = {
+    operator: "",
+    firstNumber: "",
+    secondNumber: ""
+}
+
 function getInputField() {
     return document.getElementById("input-field");
 }
@@ -59,10 +65,10 @@ function clearInputField() {
 
 function storeCurrentOperator(operator) {
     const inputField = getInputField();
-    inputField.dataset["currentOperator"] = operator.dataset.value;
+    currentCalculation.operator = operator.dataset.value;
 }
 
 function storeFirstNumber() {
     const inputField = getInputField();
-    inputField.dataset.firstNumber = inputField.textContent;
+    currentCalculation.firstNumber = inputField.textContent;
 }
