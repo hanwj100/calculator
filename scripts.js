@@ -59,7 +59,14 @@ invertButton.addEventListener("click", () => {
     storeCurrentNumber();
     invertCurrentNumber();
     updateInputField(calculation.currentNumber);
-})
+});
+
+const percentageButton = document.getElementById("percentage-button");
+percentageButton.addEventListener("click", () => {
+    storeCurrentNumber();
+    currentNumberToPercent();
+    updateInputField(calculation.currentNumber);
+});
 
 const evaluatorButton = document.getElementById("equal-button");
 evaluatorButton.addEventListener("click", () => {
@@ -97,6 +104,10 @@ function storeCurrentNumber() {
 
 function invertCurrentNumber() {
     calculation.currentNumber = calculation.currentNumber * -1;
+}
+
+function currentNumberToPercent() {
+    calculation.currentNumber = calculation.currentNumber / 100;
 }
 
 function clearCalculation() {
