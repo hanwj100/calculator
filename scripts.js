@@ -55,7 +55,7 @@ const invertButton = document.getElementById("invert-button");
 invertButton.addEventListener("click", () => {
     storeCurrentNumber();
     invertCurrentNumber();
-    updateInputField(calculation.result);
+    updateInputField(calculation.currentNumber);
 })
 
 const evaluatorButton = document.getElementById("equal-button");
