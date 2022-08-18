@@ -51,10 +51,10 @@ for (let operator of operatorButtons) {
     });
 }
 
-const inverseButton = document.getElementById("inverse-button");
-inverseButton.addEventListener("click", () => {
+const invertButton = document.getElementById("invert-button");
+invertButton.addEventListener("click", () => {
     storeCurrentNumber();
-    inverseCurrentNumber();
+    invertCurrentNumber();
     clearInputField();
     appendToInputField(calculation.currentNumber);
 })
@@ -89,7 +89,7 @@ function storeCurrentNumber() {
     calculation.currentNumber = getInputField().textContent;
 }
 
-function inverseCurrentNumber() {
+function invertCurrentNumber() {
     calculation.currentNumber = Number(calculation.currentNumber) * -1;
 }
 
