@@ -11,11 +11,11 @@ function multiply(x, y) {
 }
 
 function divide(x, y) {
-    return x/y;
+    return x / y;
 }
 
 function operate(operator, x, y) {
-    switch(operator) {
+    switch (operator) {
         case "+":
             return add(x, y);
         case "-":
