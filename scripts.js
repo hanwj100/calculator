@@ -24,6 +24,8 @@ function operate(operator, x, y) {
             return multiply(x, y);
         case "÷":
             return divide(x, y);
+        case "":
+            return y;
     }
 }
 
