@@ -27,7 +27,7 @@ for (let button of numberButtons) {
 const clearButton = document.getElementById("clear-button");
 clearButton.addEventListener("click", () => {
     clearCalculation();
-    clearInputField();
+    resetInputField();
 });
 
 const operatorButtons = document.getElementsByClassName("operator");
