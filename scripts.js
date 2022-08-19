@@ -2,6 +2,7 @@
 
 let calculation = {
     operator: "",
+    operatorEvaluated: false,
     isWaitingForNumber: true,
     decimalClicked: false,
     previousNumber: 0,
@@ -53,6 +54,7 @@ for (let operator of operatorButtons) {
         storeCurrentOperator(operator);
         storeCurrentNumber();
         calculation.isWaitingForNumber = true;
+        calculation.operatorEvaluated = false;
         calculation.previousNumber = calculation.currentNumber;
     });
 }
@@ -77,6 +79,7 @@ evaluatorButton.addEventListener("click", () => {
     calculateResult();
     updateInputField(calculation.result);
     calculation.isWaitingForNumber = true;
+    calculation.operatorEvaluated = true;
 });
 
 /* DISPLAY FUNCTIONS */
@@ -123,6 +126,7 @@ function currentNumberToPercent() {
 
 function clearCalculation() {
     calculation.operator = "";
+    calculation.operatorEvaluated = "false";
     calculation.isWaitingForNumber = true;
     calculation.decimalClicked = false;
     calculation.previousNumber = 0;
