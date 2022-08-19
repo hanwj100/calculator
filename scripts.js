@@ -1,33 +1,4 @@
-function add(x, y) {
-    return x + y;
-}
-
-function subtract(x, y) {
-    return x - y;
-}
-
-function multiply(x, y) {
-    return x * y;
-}
-
-function divide(x, y) {
-    return x / y;
-}
-
-function operate(operator, x, y) {
-    switch (operator) {
-        case "+":
-            return add(x, y);
-        case "-":
-            return subtract(x, y);
-        case "×":
-            return multiply(x, y);
-        case "÷":
-            return divide(x, y);
-        case "":
-            return y;
-    }
-}
+/* MAIN CALCULATION OBJECT */
 
 let calculation = {
     operator: "",
@@ -36,6 +7,10 @@ let calculation = {
     currentNumber: 0,
     result: 0
 }
+
+/* MAIN FUNCTION */
+
+/* BUTTON FUNCTIONALITY AND EVENT LISTENERS */
 
 const numberButtons = document.getElementsByClassName("number");
 for (let button of numberButtons) {
@@ -86,6 +61,8 @@ evaluatorButton.addEventListener("click", () => {
     calculation.isWaitingForNumber = true;
 });
 
+/* DISPLAY FUNCTIONS */
+
 function getInputField() {
     return document.getElementById("input-field");
 }
@@ -103,6 +80,8 @@ function updateInputField(value) {
     clearInputField();
     appendToInputField(value);
 }
+
+/* CALCULATION FUNCTIONS */
 
 function storeCurrentOperator(operator) {
     calculation.operator = operator.dataset.value;
@@ -131,4 +110,37 @@ function clearCalculation() {
 function calculateResult() {
     calculation.result = operate(calculation.operator,
         calculation.previousNumber, calculation.currentNumber);
+}
+
+/* MATH OPERATOR FUNCTIONS */
+
+function add(x, y) {
+    return x + y;
+}
+
+function subtract(x, y) {
+    return x - y;
+}
+
+function multiply(x, y) {
+    return x * y;
+}
+
+function divide(x, y) {
+    return x / y;
+}
+
+function operate(operator, x, y) {
+    switch (operator) {
+        case "+":
+            return add(x, y);
+        case "-":
+            return subtract(x, y);
+        case "×":
+            return multiply(x, y);
+        case "÷":
+            return divide(x, y);
+        case "":
+            return y;
+    }
 }
