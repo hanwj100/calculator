@@ -9,6 +9,7 @@ let calculation = {
 }
 
 /* MAIN FUNCTION */
+updateInputField(0);
 
 
 /* BUTTON FUNCTIONALITY AND EVENT LISTENERS */
