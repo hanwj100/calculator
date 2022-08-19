@@ -16,15 +16,15 @@ resetInputField();
 /* BUTTON FUNCTIONALITY AND EVENT LISTENERS */
 
 const numberButtons = document.getElementsByClassName("number");
-for (let button of numberButtons) {
-    if (button.id !== "decimal-button") {
-        button.addEventListener("click", () => {
+for (let number of numberButtons) {
+    if (number.id !== "decimal-button") {
+        number.addEventListener("click", () => {
             if (calculation.isWaitingForNumber) {
                 clearInputField();
                 calculation.isWaitingForNumber = false;
                 calculation.decimalClicked = false;
             }
-            appendToInputField(button.dataset.value);
+            appendToInputField(number.dataset.value);
         });
     }
 }
