@@ -149,11 +149,13 @@ function storeCurrentNumber() {
 }
 
 function invertCurrentNumber() {
-    calculation.currentNumber = calculation.currentNumber * -1;
+    calculation.currentNumber = operate("×", calculation.currentNumber, 
+    -1);
 }
 
 function currentNumberToPercent() {
-    calculation.currentNumber = calculation.currentNumber / 100;
+    calculation.currentNumber = operate("÷", calculation.currentNumber, 
+    100);
 }
 
 function clearCalculation() {
