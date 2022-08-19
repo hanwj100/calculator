@@ -144,7 +144,8 @@ function storeCurrentOperator(operator) {
 }
 
 function storeCurrentNumber() {
-    calculation.currentNumber = Number(getInputField().textContent);
+    calculation.currentNumber = (getInputField().textContent === "Error") ?
+        "Error" : Number(getInputField().textContent);
 }
 
 function invertCurrentNumber() {
@@ -166,8 +167,9 @@ function clearCalculation() {
 }
 
 function calculateResult() {
-    calculation.result = operate(calculation.operator,
-        calculation.previousNumber, calculation.currentNumber);
+    calculation.result = (calculation.previousNumber === "Error") ? 
+        "Error" : operate(calculation.operator, calculation.previousNumber, 
+            calculation.currentNumber);
 }
 
 
@@ -199,6 +201,9 @@ function operate(operator, x, y) {
         case "×":
             return multiply(x, y);
         case "÷":
+            if (y === 0) {
+                return "Error";
+            }
             return divide(x, y);
         case "":
             return y;
