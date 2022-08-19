@@ -1,5 +1,6 @@
 /* MAIN CALCULATION OBJECT */
 
+
 let calculation = {
     operator: "",
     operatorEvaluated: true,
@@ -10,10 +11,15 @@ let calculation = {
     result: 0
 }
 
+
 /* MAIN FUNCTION */
+
+
 resetInputField();
 
+
 /* BUTTON FUNCTIONALITY AND EVENT LISTENERS */
+
 
 const numberButtons = document.getElementsByClassName("number");
 for (let number of numberButtons) {
@@ -42,7 +48,9 @@ percentageButton.addEventListener("click", percentageButtonFunction);
 const evaluatorButton = document.getElementById("equal-button");
 evaluatorButton.addEventListener("click", evaluatorButtonFunction);
 
+
 /* BUTTON FUNCTIONS */
+
 
 function numberButtonFunction(number) {
     if (calculation.isWaitingForNumber) {
@@ -101,7 +109,9 @@ function evaluatorButtonFunction() {
     calculation.operatorEvaluated = true;
 }
 
+
 /* DISPLAY FUNCTIONS */
+
 
 function getInputField() {
     return document.getElementById("input-field");
@@ -125,7 +135,9 @@ function resetInputField() {
     updateInputField(0);
 }
 
+
 /* CALCULATION FUNCTIONS */
+
 
 function storeCurrentOperator(operator) {
     calculation.operator = operator.dataset.value;
@@ -158,7 +170,9 @@ function calculateResult() {
         calculation.previousNumber, calculation.currentNumber);
 }
 
+
 /* MATH OPERATOR FUNCTIONS */
+
 
 function add(x, y) {
     return x + y;
