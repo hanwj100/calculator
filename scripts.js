@@ -37,10 +37,10 @@ const invertButton = document.getElementById("invert-button");
 invertButton.addEventListener("click", invertButtonFunction);
 
 const percentageButton = document.getElementById("percentage-button");
-percentageButton.addEventListener("click", () => percentageButtonFunction);
+percentageButton.addEventListener("click", percentageButtonFunction);
 
 const evaluatorButton = document.getElementById("equal-button");
-evaluatorButton.addEventListener("click", () => evaluatorButtonFunction);
+evaluatorButton.addEventListener("click", evaluatorButtonFunction);
 
 /* BUTTON FUNCTIONS */
 
