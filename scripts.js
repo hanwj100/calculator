@@ -3,6 +3,7 @@
 let calculation = {
     operator: "",
     isWaitingForNumber: true,
+    decimalClicked: false,
     previousNumber: 0,
     currentNumber: 0,
     result: 0
@@ -107,6 +108,7 @@ function currentNumberToPercent() {
 function clearCalculation() {
     calculation.operator = "";
     calculation.isWaitingForNumber = true;
+    calculation.decimalClicked = false;
     calculation.previousNumber = 0;
     calculation.currentNumber = 0;
     calculation.result = 0;
