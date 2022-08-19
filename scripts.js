@@ -71,6 +71,9 @@ function clearButtonFunction() {
 }
 
 function operatorButtonFunction(operator) {
+    if (calculation.operatorEvaluated === false) {
+        evaluatorButtonFunction();
+    }
     storeCurrentOperator(operator);
     storeCurrentNumber();
     calculation.isWaitingForNumber = true;
