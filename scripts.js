@@ -16,14 +16,30 @@ resetInputField();
 
 const numberButtons = document.getElementsByClassName("number");
 for (let button of numberButtons) {
-    button.addEventListener("click", () => {
-        if (calculation.isWaitingForNumber) {
-            clearInputField();
-            calculation.isWaitingForNumber = false;
-        }
-        appendToInputField(button.dataset.value);
-    });
+    if (button.id !== "decimal-button") {
+        button.addEventListener("click", () => {
+            if (calculation.isWaitingForNumber) {
+                clearInputField();
+                calculation.isWaitingForNumber = false;
+                calculation.decimalClicked = false;
+            }
+            appendToInputField(button.dataset.value);
+        });
+    }
 }
+
+const decimalButton = document.getElementById("decimal-button");
+decimalButton.addEventListener("click", () => {
+    if (calculation.isWaitingForNumber) {
+        resetInputField();
+        calculation.isWaitingForNumber = false;
+        calculation.decimalClicked = false;
+    }
+    if (!calculation.decimalClicked) {
+        appendToInputField(decimalButton.dataset.value);
+        calculation.decimalClicked = true;
+    }
+});
 
 const clearButton = document.getElementById("clear-button");
 clearButton.addEventListener("click", () => {
