@@ -9,8 +9,7 @@ let calculation = {
 }
 
 /* MAIN FUNCTION */
-updateInputField(0);
-
+resetInputField();
 
 /* BUTTON FUNCTIONALITY AND EVENT LISTENERS */
 
@@ -81,6 +80,10 @@ function clearInputField() {
 function updateInputField(value) {
     clearInputField();
     appendToInputField(value);
+}
+
+function resetInputField() {
+    updateInputField(0);
 }
 
 /* CALCULATION FUNCTIONS */
