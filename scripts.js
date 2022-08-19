@@ -2,13 +2,14 @@
 
 let calculation = {
     operator: "",
-    isWaitingForNumber: false,
+    isWaitingForNumber: true,
     previousNumber: 0,
     currentNumber: 0,
     result: 0
 }
 
 /* MAIN FUNCTION */
+
 
 /* BUTTON FUNCTIONALITY AND EVENT LISTENERS */
 
@@ -101,7 +102,7 @@ function currentNumberToPercent() {
 
 function clearCalculation() {
     calculation.operator = "";
-    calculation.isWaitingForNumber = false;
+    calculation.isWaitingForNumber = true;
     calculation.previousNumber = 0;
     calculation.currentNumber = 0;
     calculation.result = 0;
