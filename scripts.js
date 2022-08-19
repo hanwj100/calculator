@@ -30,9 +30,9 @@ function operate(operator, x, y) {
 let calculation = {
     operator: "",
     isWaitingForNumber: false,
-    previousNumber: NaN,
-    currentNumber: NaN,
-    result: NaN
+    previousNumber: 0,
+    currentNumber: 0,
+    result: 0
 }
 
 const numberButtons = document.getElementsByClassName("number");
@@ -121,9 +121,9 @@ function currentNumberToPercent() {
 function clearCalculation() {
     calculation.operator = "";
     calculation.isWaitingForNumber = false;
-    calculation.previousNumber = NaN;
-    calculation.currentNumber = NaN;
-    calculation.result = NaN;
+    calculation.previousNumber = 0;
+    calculation.currentNumber = 0;
+    calculation.result = 0;
 }
 
 function calculateResult() {
