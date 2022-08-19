@@ -167,9 +167,8 @@ function clearCalculation() {
 }
 
 function calculateResult() {
-    calculation.result = (calculation.previousNumber === "Error") ? 
-        "Error" : operate(calculation.operator, calculation.previousNumber, 
-            calculation.currentNumber);
+    calculation.result = operate(calculation.operator, 
+        calculation.previousNumber, calculation.currentNumber);
 }
 
 
@@ -193,6 +192,9 @@ function divide(x, y) {
 }
 
 function operate(operator, x, y) {
+    if(x === "Error" || y === "Error") {
+        return "Error";
+    }
     switch (operator) {
         case "+":
             return add(x, y);
