@@ -8,6 +8,7 @@ let calculation = {
     decimalClicked: false,
     previousNumber: 0,
     currentNumber: 0,
+    repeatNumber: NaN,
     result: 0
 }
 
@@ -84,9 +85,9 @@ function operatorButtonFunction(operator) {
     }
     storeCurrentOperator(operator);
     storeCurrentNumber();
+    calculation.previousNumber = calculation.currentNumber;
     calculation.isWaitingForNumber = true;
     calculation.operatorEvaluated = false;
-    calculation.previousNumber = calculation.currentNumber;
 }
 
 function invertButtonFunction() {
@@ -107,6 +108,9 @@ function evaluatorButtonFunction() {
     updateInputField(calculation.result);
     calculation.isWaitingForNumber = true;
     calculation.operatorEvaluated = true;
+    if (Number.isNaN(calculation.repeatNumber)) {
+        calculation.repeatNumber = calculation.currentNumber;
+    }
 }
 
 
@@ -149,13 +153,13 @@ function storeCurrentNumber() {
 }
 
 function invertCurrentNumber() {
-    calculation.currentNumber = operate("×", calculation.currentNumber, 
-    -1);
+    calculation.currentNumber = operate("×", calculation.currentNumber,
+        -1);
 }
 
 function currentNumberToPercent() {
-    calculation.currentNumber = operate("÷", calculation.currentNumber, 
-    100);
+    calculation.currentNumber = operate("÷", calculation.currentNumber,
+        100);
 }
 
 function clearCalculation() {
@@ -165,12 +169,19 @@ function clearCalculation() {
     calculation.decimalClicked = false;
     calculation.previousNumber = 0;
     calculation.currentNumber = 0;
+    calculation.repeatNumber = NaN;
     calculation.result = 0;
 }
 
 function calculateResult() {
-    calculation.result = operate(calculation.operator, 
-        calculation.previousNumber, calculation.currentNumber);
+    if (Number.isNaN(calculation.repeatNumber)) {
+        calculation.result = operate(calculation.operator,
+            calculation.previousNumber, calculation.currentNumber);
+    }
+    else {
+        calculation.result = operate(calculation.operator,
+            calculation.result, calculation.repeatNumber);
+    }
 }
 
 
@@ -194,7 +205,7 @@ function divide(x, y) {
 }
 
 function operate(operator, x, y) {
-    if(x === "Error" || y === "Error") {
+    if (x === "Error" || y === "Error") {
         return "Error";
     }
     switch (operator) {
