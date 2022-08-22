@@ -88,6 +88,7 @@ function operatorButtonFunction(operator) {
     calculation.previousNumber = calculation.currentNumber;
     calculation.isWaitingForNumber = true;
     calculation.operatorEvaluated = false;
+    calculation.repeatNumber = NaN;
 }
 
 function invertButtonFunction() {
