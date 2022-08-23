@@ -2,14 +2,21 @@
 
 
 let calculation = {
-    operator: "",
-    operatorEvaluated: true,
-    isWaitingForNumber: true,
-    decimalClicked: false,
-    previousNumber: 0,
-    currentNumber: 0,
-    repeatNumber: NaN,
-    result: 0
+    number: {
+        previous: 0,
+        current: 0,
+        repeat: NaN,
+        result: 0
+
+    },
+    operator: {
+        value: "",
+        evaluated: true,
+    },
+    state: {
+        waitingForNumber: true,
+        decimalClicked: false,
+    },
 }
 
 
@@ -54,23 +61,23 @@ evaluatorButton.addEventListener("click", evaluatorButtonFunction);
 
 
 function numberButtonFunction(number) {
-    if (calculation.isWaitingForNumber) {
+    if (calculation.state.waitingForNumber) {
         clearInputField();
-        calculation.isWaitingForNumber = false;
-        calculation.decimalClicked = false;
+        calculation.state.waitingForNumber = false;
+        calculation.state.decimalClicked = false;
     }
     appendToInputField(number.dataset.value);
 }
 
 function decimalButtonFunction() {
-    if (calculation.isWaitingForNumber) {
+    if (calculation.state.waitingForNumber) {
         resetInputField();
-        calculation.isWaitingForNumber = false;
-        calculation.decimalClicked = false;
+        calculation.state.waitingForNumber = false;
+        calculation.state.decimalClicked = false;
     }
-    if (!calculation.decimalClicked) {
+    if (!calculation.state.decimalClicked) {
         appendToInputField(decimalButton.dataset.value);
-        calculation.decimalClicked = true;
+        calculation.state.decimalClicked = true;
     }
 }
 
@@ -80,37 +87,37 @@ function clearButtonFunction() {
 }
 
 function operatorButtonFunction(operator) {
-    if (calculation.operatorEvaluated === false) {
+    if (calculation.operator.evaluated === false) {
         evaluatorButtonFunction();
     }
     storeCurrentOperator(operator);
     storeCurrentNumber();
-    calculation.previousNumber = calculation.currentNumber;
-    calculation.isWaitingForNumber = true;
-    calculation.operatorEvaluated = false;
-    calculation.repeatNumber = NaN;
+    calculation.number.previous = calculation.number.current;
+    calculation.state.waitingForNumber = true;
+    calculation.operator.evaluated = false;
+    calculation.number.repeat = NaN;
 }
 
 function invertButtonFunction() {
     storeCurrentNumber();
     invertCurrentNumber();
-    updateInputField(calculation.currentNumber);
+    updateInputField(calculation.number.current);
 }
 
 function percentageButtonFunction() {
     storeCurrentNumber();
     currentNumberToPercent();
-    updateInputField(calculation.currentNumber);
+    updateInputField(calculation.number.current);
 }
 
 function evaluatorButtonFunction() {
     storeCurrentNumber();
     calculateResult();
-    updateInputField(calculation.result);
-    calculation.isWaitingForNumber = true;
-    calculation.operatorEvaluated = true;
+    updateInputField(calculation.number.result);
+    calculation.state.waitingForNumber = true;
+    calculation.operator.evaluated = true;
     if (repeatNumberIsNotSet()) {
-        calculation.repeatNumber = calculation.currentNumber;
+        calculation.number.repeat = calculation.number.current;
     }
 }
 
@@ -145,48 +152,48 @@ function resetInputField() {
 
 
 function storeCurrentOperator(operator) {
-    calculation.operator = operator.dataset.value;
+    calculation.operator.value = operator.dataset.value;
 }
 
 function storeCurrentNumber() {
-    calculation.currentNumber = (getInputField().textContent === "Error") ?
+    calculation.number.current = (getInputField().textContent === "Error") ?
         "Error" : Number(getInputField().textContent);
 }
 
 function invertCurrentNumber() {
-    calculation.currentNumber = operate("×", calculation.currentNumber,
+    calculation.number.current = operate("×", calculation.number.current,
         -1);
 }
 
 function currentNumberToPercent() {
-    calculation.currentNumber = operate("÷", calculation.currentNumber,
+    calculation.number.current = operate("÷", calculation.number.current,
         100);
 }
 
 function clearCalculation() {
-    calculation.operator = "";
-    calculation.operatorEvaluated = true;
-    calculation.isWaitingForNumber = true;
-    calculation.decimalClicked = false;
-    calculation.previousNumber = 0;
-    calculation.currentNumber = 0;
-    calculation.repeatNumber = NaN;
-    calculation.result = 0;
+    calculation.number.previous = 0;
+    calculation.number.current = 0;
+    calculation.number.repeat = NaN;
+    calculation.number.result = 0;
+    calculation.operator.value = "";
+    calculation.operator.evaluated = true;
+    calculation.state.waitingForNumber = true;
+    calculation.state.decimalClicked = false;
 }
 
 function calculateResult() {
     if (repeatNumberIsNotSet()) {
-        calculation.result = operate(calculation.operator,
-            calculation.previousNumber, calculation.currentNumber);
+        calculation.number.result = operate(calculation.operator.value,
+            calculation.number.previous, calculation.number.current);
     }
     else {
-        calculation.result = operate(calculation.operator,
-            calculation.result, calculation.repeatNumber);
+        calculation.number.result = operate(calculation.operator.value,
+            calculation.number.result, calculation.number.repeat);
     }
 }
 
 function repeatNumberIsNotSet() {
-    return Number.isNaN(calculation.repeatNumber);
+    return Number.isNaN(calculation.number.repeat);
 }
 
 
