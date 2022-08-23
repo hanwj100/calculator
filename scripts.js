@@ -66,7 +66,12 @@ function numberButtonFunction(number) {
         calculation.state.waitingForNumber = false;
         calculation.state.decimalClicked = false;
     }
-    appendToInputField(number.dataset.value);
+    if (!firstNumberIsZero() || calculation.state.decimalClicked) {
+        appendToInputField(number.dataset.value);
+    }
+    else {
+        updateInputField(number.dataset.value);
+    }
 }
 
 function decimalButtonFunction() {
@@ -194,6 +199,12 @@ function calculateResult() {
 
 function repeatNumberIsNotSet() {
     return Number.isNaN(calculation.number.repeat);
+}
+
+function firstNumberIsZero() {
+    let inputField = getInputField();
+    return inputField.textContent === "0" && 
+        inputField.textContent.length === 1;
 }
 
 
