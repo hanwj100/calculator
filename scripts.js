@@ -16,6 +16,7 @@ let calculation = {
     state: {
         waitingForNumber: true,
         decimalClicked: false,
+        whichClear: "allClear"
     },
 }
 
@@ -62,15 +63,17 @@ equalButton.addEventListener("click", equalFunction);
 
 function numberFunction(number) {
     if (calculation.state.waitingForNumber) {
-        clearInputField();
+        resetInputField();
         calculation.state.waitingForNumber = false;
         calculation.state.decimalClicked = false;
     }
     if (!firstNumberIsZero() || calculation.state.decimalClicked) {
         appendToInputField(number.dataset.value);
+        calculation.state.whichClear = "clear";
     }
-    else {
+    else if (number.dataset.value !== "0") {
         updateInputField(number.dataset.value);
+        calculation.state.whichClear = "clear";
     }
 }
 
@@ -84,11 +87,21 @@ function decimalFunction() {
         appendToInputField(decimalButton.dataset.value);
         calculation.state.decimalClicked = true;
     }
+    calculation.state.whichClear = "clear";
 }
 
 function clearFunction() {
-    clearCalculation();
-    resetInputField();
+    if (calculation.state.whichClear === "clear") {
+        resetInputField();
+        calculation.state.waitingForNumber = true;
+        calculation.state.decimalClicked = false;
+        calculation.state.whichClear = "allClear";
+    }
+    else if (calculation.state.whichClear === "allClear") {
+        clearCalculation();
+        resetInputField();
+
+    }
 }
 
 function operatorFunction(operator) {
@@ -203,7 +216,7 @@ function repeatNumberSet() {
 
 function firstNumberIsZero() {
     let inputField = getInputField();
-    return inputField.textContent === "0" && 
+    return inputField.textContent === "0" &&
         inputField.textContent.length === 1;
 }
 
