@@ -121,7 +121,7 @@ function equalFunction() {
     updateInputField(calculation.number.result);
     calculation.state.waitingForNumber = true;
     calculation.operator.evaluated = true;
-    if (repeatNumberIsNotSet()) {
+    if (!repeatNumberSet()) {
         calculation.number.repeat = calculation.number.current;
     }
 }
@@ -187,7 +187,7 @@ function clearCalculation() {
 }
 
 function calculateResult() {
-    if (repeatNumberIsNotSet()) {
+    if (!repeatNumberSet()) {
         calculation.number.result = operate(calculation.operator.value,
             calculation.number.previous, calculation.number.current);
     }
@@ -197,8 +197,8 @@ function calculateResult() {
     }
 }
 
-function repeatNumberIsNotSet() {
-    return Number.isNaN(calculation.number.repeat);
+function repeatNumberSet() {
+    return !Number.isNaN(calculation.number.repeat);
 }
 
 function firstNumberIsZero() {
