@@ -109,7 +109,7 @@ function evaluatorButtonFunction() {
     updateInputField(calculation.result);
     calculation.isWaitingForNumber = true;
     calculation.operatorEvaluated = true;
-    if (repeatNumberIsNotSet) {
+    if (repeatNumberIsNotSet()) {
         calculation.repeatNumber = calculation.currentNumber;
     }
 }
@@ -175,7 +175,7 @@ function clearCalculation() {
 }
 
 function calculateResult() {
-    if (repeatNumberIsNotSet) {
+    if (repeatNumberIsNotSet()) {
         calculation.result = operate(calculation.operator,
             calculation.previousNumber, calculation.currentNumber);
     }
