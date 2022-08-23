@@ -53,8 +53,8 @@ invertButton.addEventListener("click", invertFunction);
 const percentageButton = document.getElementById("percentage-button");
 percentageButton.addEventListener("click", percentageFunction);
 
-const evaluatorButton = document.getElementById("equal-button");
-evaluatorButton.addEventListener("click", evaluatorFunction);
+const equalButton = document.getElementById("equal-button");
+equalButton.addEventListener("click", equalFunction);
 
 
 /* BUTTON FUNCTIONS */
@@ -93,7 +93,7 @@ function clearFunction() {
 
 function operatorFunction(operator) {
     if (calculation.operator.evaluated === false) {
-        evaluatorFunction();
+        equalFunction();
     }
     storeCurrentOperator(operator);
     storeCurrentNumber();
@@ -115,7 +115,7 @@ function percentageFunction() {
     updateInputField(calculation.number.current);
 }
 
-function evaluatorFunction() {
+function equalFunction() {
     storeCurrentNumber();
     calculateResult();
     updateInputField(calculation.number.result);
