@@ -32,35 +32,35 @@ resetInputField();
 const numberButtons = document.getElementsByClassName("number");
 for (let number of numberButtons) {
     if (number.id !== "decimal-button") {
-        number.addEventListener("click", () => numberButtonFunction(number));
+        number.addEventListener("click", () => numberFunction(number));
     }
 }
 
 const decimalButton = document.getElementById("decimal-button");
-decimalButton.addEventListener("click", decimalButtonFunction);
+decimalButton.addEventListener("click", decimalFunction);
 
 const clearButton = document.getElementById("clear-button");
-clearButton.addEventListener("click", clearButtonFunction);
+clearButton.addEventListener("click", clearFunction);
 
 const operatorButtons = document.getElementsByClassName("operator");
 for (let operator of operatorButtons) {
-    operator.addEventListener("click", () => operatorButtonFunction(operator));
+    operator.addEventListener("click", () => operatorFunction(operator));
 }
 
 const invertButton = document.getElementById("invert-button");
-invertButton.addEventListener("click", invertButtonFunction);
+invertButton.addEventListener("click", invertFunction);
 
 const percentageButton = document.getElementById("percentage-button");
-percentageButton.addEventListener("click", percentageButtonFunction);
+percentageButton.addEventListener("click", percentageFunction);
 
 const evaluatorButton = document.getElementById("equal-button");
-evaluatorButton.addEventListener("click", evaluatorButtonFunction);
+evaluatorButton.addEventListener("click", evaluatorFunction);
 
 
 /* BUTTON FUNCTIONS */
 
 
-function numberButtonFunction(number) {
+function numberFunction(number) {
     if (calculation.state.waitingForNumber) {
         clearInputField();
         calculation.state.waitingForNumber = false;
@@ -74,7 +74,7 @@ function numberButtonFunction(number) {
     }
 }
 
-function decimalButtonFunction() {
+function decimalFunction() {
     if (calculation.state.waitingForNumber) {
         resetInputField();
         calculation.state.waitingForNumber = false;
@@ -86,14 +86,14 @@ function decimalButtonFunction() {
     }
 }
 
-function clearButtonFunction() {
+function clearFunction() {
     clearCalculation();
     resetInputField();
 }
 
-function operatorButtonFunction(operator) {
+function operatorFunction(operator) {
     if (calculation.operator.evaluated === false) {
-        evaluatorButtonFunction();
+        evaluatorFunction();
     }
     storeCurrentOperator(operator);
     storeCurrentNumber();
@@ -103,19 +103,19 @@ function operatorButtonFunction(operator) {
     calculation.number.repeat = NaN;
 }
 
-function invertButtonFunction() {
+function invertFunction() {
     storeCurrentNumber();
     invertCurrentNumber();
     updateInputField(calculation.number.current);
 }
 
-function percentageButtonFunction() {
+function percentageFunction() {
     storeCurrentNumber();
     currentNumberToPercent();
     updateInputField(calculation.number.current);
 }
 
-function evaluatorButtonFunction() {
+function evaluatorFunction() {
     storeCurrentNumber();
     calculateResult();
     updateInputField(calculation.number.result);
