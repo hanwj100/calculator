@@ -68,7 +68,7 @@ function numberFunction(number) {
         calculation.state.decimalClicked = false;
     }
     if (!firstNumberIsZero() || calculation.state.decimalClicked) {
-        appendToInputField(number.dataset.value);
+        updateInputField(appendToNumber(number.dataset.value));
         calculation.state.whichClear = "clear";
         setClearFunctionText();
     }
@@ -86,7 +86,7 @@ function decimalFunction() {
         calculation.state.decimalClicked = false;
     }
     if (!calculation.state.decimalClicked) {
-        appendToInputField(decimalButton.dataset.value);
+        updateInputField(appendToNumber(decimalButton.dataset.value));
         calculation.state.decimalClicked = true;
     }
     calculation.state.whichClear = "clear";
@@ -156,9 +156,9 @@ function getInputField() {
     return document.getElementById("input-field");
 }
 
-function appendToInputField(value) {
+function appendToNumber(value) {
     const inputField = getInputField();
-    inputField.textContent = inputField.textContent.concat(value);
+    return inputField.textContent.concat(value);
 }
 
 function clearInputField() {
@@ -166,8 +166,8 @@ function clearInputField() {
 }
 
 function updateInputField(value) {
-    clearInputField();
-    appendToInputField(value);
+    const inputField = getInputField();
+    inputField.textContent = value;
 }
 
 function resetInputField() {
