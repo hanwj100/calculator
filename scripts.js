@@ -20,6 +20,9 @@ let calculation = {
     },
 }
 
+/* CONSTANTS */
+
+let MAX_NUMBER_LENGTH = 9;
 
 /* MAIN FUNCTION */
 
@@ -156,18 +159,21 @@ function getInputField() {
     return document.getElementById("input-field");
 }
 
-function appendToNumber(value) {
-    const inputField = getInputField();
-    return inputField.textContent.concat(value);
+function appendToNumber(newDigit) {
+    const inputFieldNumber = getInputField().textContent;
+    if (inputFieldNumber.length < MAX_NUMBER_LENGTH) {
+        return inputFieldNumber.concat(newDigit);
+    }
+    return inputFieldNumber;
 }
 
 function clearInputField() {
     getInputField().textContent = "";
 }
 
-function updateInputField(value) {
+function updateInputField(newNumber) {
     const inputField = getInputField();
-    inputField.textContent = value;
+    inputField.textContent = newNumber;
 }
 
 function resetInputField() {
