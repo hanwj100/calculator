@@ -70,10 +70,12 @@ function numberFunction(number) {
     if (!firstNumberIsZero() || calculation.state.decimalClicked) {
         appendToInputField(number.dataset.value);
         calculation.state.whichClear = "clear";
+        setClearFunctionText();
     }
     else if (number.dataset.value !== "0") {
         updateInputField(number.dataset.value);
         calculation.state.whichClear = "clear";
+        setClearFunctionText();
     }
 }
 
@@ -88,6 +90,7 @@ function decimalFunction() {
         calculation.state.decimalClicked = true;
     }
     calculation.state.whichClear = "clear";
+    setClearFunctionText();
 }
 
 function clearFunction() {
@@ -96,12 +99,18 @@ function clearFunction() {
         calculation.state.waitingForNumber = true;
         calculation.state.decimalClicked = false;
         calculation.state.whichClear = "allClear";
+        setClearFunctionText();
     }
     else if (calculation.state.whichClear === "allClear") {
         clearCalculation();
         resetInputField();
 
     }
+}
+
+function setClearFunctionText() {
+    clearButton.textContent = (calculation.state.whichClear === "clear") ?
+        "C" : "AC";
 }
 
 function operatorFunction(operator) {
