@@ -172,12 +172,22 @@ function clearInputField() {
 }
 
 function updateInputField(newNumber) {
-    const inputField = getInputField();
-    inputField.textContent = newNumber;
+    getInputField().textContent = reFormatNumber(newNumber);
 }
 
 function resetInputField() {
     updateInputField(0);
+}
+
+
+/* NUMBER FORMATTING FUNCTIONS */
+
+
+function reFormatNumber(number) {
+    const numberWithoutComma = number.toString().split(",").join("");
+    const numberSplitByDecimal = numberWithoutComma.split(".");
+    numberSplitByDecimal[0] = Number(numberSplitByDecimal[0]).toLocaleString();
+    return numberSplitByDecimal.join(".");
 }
 
 
