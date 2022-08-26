@@ -172,7 +172,7 @@ function clearInputField() {
 }
 
 function updateInputField(newNumber) {
-    getInputField().textContent = reFormatNumber(newNumber);
+    getInputField().textContent = formatNumber(deFormatNumber(newNumber));
 }
 
 function resetInputField() {
@@ -183,13 +183,16 @@ function resetInputField() {
 /* NUMBER FORMATTING FUNCTIONS */
 
 
-function reFormatNumber(number) {
-    const numberWithoutComma = number.toString().split(",").join("");
-    const numberSplitByDecimal = numberWithoutComma.split(".");
-    numberSplitByDecimal[0] = Number(numberSplitByDecimal[0]).toLocaleString();
-    return numberSplitByDecimal.join(".");
+function formatNumber(number) {
+    const integerFractionSplitArray = number.split(".");
+    integerFractionSplitArray[0] = Number(integerFractionSplitArray[0]).toLocaleString();
+    return integerFractionSplitArray.join(".");
 }
 
+
+function deFormatNumber(number) {
+    return number.toString().split(",").join("");
+}
 
 /* CALCULATION FUNCTIONS */
 
@@ -200,7 +203,7 @@ function storeCurrentOperator(operator) {
 
 function storeCurrentNumber() {
     calculation.number.current = (getInputField().textContent === "Error") ?
-        "Error" : Number(getInputField().textContent);
+        "Error" : Number(deFormatNumber(getInputField().textContent));
 }
 
 function invertCurrentNumber() {
