@@ -5,16 +5,56 @@ body {
     min-height: 95vh;
 }
 
+button {
+    font-size: 25px;
+    border-radius: 50%;
+    margin: 3px;
+    border: none;
+}
+
+.functional {
+    color: black;
+}
+
+.number {
+    color: white;
+    background-color: dimgray;
+}
+
+.operator,
+.evaluator {
+    color: white;
+    background-color: orange;
+}
+
+.blocker {
+    background-color: black;
+}
+
 .calculator {
     width: 300px;
+    height: 600px;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding: 10px;
 }
 
 .display {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    color: white;
     display: flex;
     justify-content: flex-end;
+    align-items: flex-end;
+    padding: 10px;
+    font-size: 50px;
 }
 
 .buttons {
+    flex: 2;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
