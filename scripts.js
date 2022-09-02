@@ -132,12 +132,14 @@ function invertFunction() {
     storeCurrentNumber();
     invertCurrentNumber();
     updateInputField(calculation.number.current);
+    calculation.state.waitingForNumber = true;
 }
 
 function percentageFunction() {
     storeCurrentNumber();
     currentNumberToPercent();
     updateInputField(calculation.number.current);
+    calculation.state.waitingForNumber = true;
 }
 
 function equalFunction() {
