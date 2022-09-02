@@ -5,16 +5,16 @@ body {
     min-height: 95vh;
 }
 
-#calculator {
+.calculator {
     width: 300px;
 }
 
-#display {
+.display {
     display: flex;
     justify-content: flex-end;
 }
 
-#buttons {
+.buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
